@@ -1,0 +1,139 @@
+#%%
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'diagonalDifference' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
+#%%
+def diagonalDifference(arr):
+    # Write your code here
+    print([arr[i][i] for i in range(len(arr))])
+#%%        To load
+if __name__ == '__main__':
+    fptr = sys.stdout
+    n = int(input().strip())
+    arr = []
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+    result = diagonalDifference(arr)
+    fptr.write(str(result) + '\n')
+    fptr.close()
+
+#%%
+#this code is to run matrix when the list the array has this format [[x,y], [a,b]]
+diagonal = 0
+otherDiagonal = 0
+ArrayLenght = len(arr)
+getRightDiagonal = ArrayLenght
+SolutionRightDiagonal = 0
+for i in range(len(arr)):
+    for j in range(len(arr)):
+        if i==j:
+            diagonal += arr[i][j]
+            getRightDiagonal = getRightDiagonal-1
+            SolutionRightDiagonal += arr[i][getRightDiagonal]
+abs((SolutionRightDiagonal- diagonal))
+
+#%%
+arr.append(1)
+arr.append(1)
+arr.append(1)
+arr.append(6)
+print(arr)
+#%%
+import numpy as np
+matrix = np.array(arr)
+print(matrix)
+#%%
+diags = [matrix[::-1,:].diagonal(i) for i in range(-3,4)]
+
+
+#%% md
+     4^4
+     [0 1 2 3
+      4 5 6 7
+      8 9 10 11           lenght is 16 4^4 (0+5+10+15) - (3+6+9+12)   0+5+5+5     3=3=3=3=3
+      12 13 14 15]
+arr[ 0 1 2
+     3 4 5      lenght is 9 3^3      (0+4+8) - (2+4+6)         4+4      2+2+2
+     6 7 8]
+ [0 1
+  2 3]        lenght is 4 2^2        (0+3) - (1+2)
+ [0]    length is 1
+
+#%%
+#These codes is when the array has the following format [x,y,z,a,b,c]
+sq = int(math.sqrt(len(arr)))
+print(sq)
+diagonal = [arr[(sq+1)*i] for i in range(0, sq)]
+totaltwo=0
+for element in range(0, len(diagonal)):
+    totaltwo = totaltwo + diagonal[element]
+print(totaltwo)
+#%%
+#for opposite diagonal
+goingOppDiagonal = sq-1
+total = 0
+store = [arr[goingOppDiagonal*i] for i in range(1,sq+1)]
+for element in range(0, len(store)):
+    total = total + store[element]
+print(total)
+#%%
+abs(totaltwo-total)
+
+#%%
+def diagonalDifference(arr):
+    # Write your code here
+    #diaongal
+    sq = int(math.sqrt(len(arr)))
+    diagonal = [arr[(sq+1)*i] for i in range(0, sq)]
+    totaltwo=0
+    for element in range(0, len(diagonal)):
+      totaltwo = totaltwo + diagonal[element]
+    #the other diagonal
+    goingOppDiagonal = sq-1
+    total = 0
+    store = [arr[goingOppDiagonal*i] for i in range(1,sq+1)]
+    for element in range(0, len(store)):
+        total = total + store[element]
+    returnThis = totaltwo-total
+    return returnThis
+    
+
+#%%
+diagonalDifference([1,4,4,4])
+#%%
+print(method)
+
+#%%
+
+#%% md
+[0,0], [0,1]
+[1,0], [1,1]
+lenght = 2
+0,0 0,1  0,2
+0,1 1,1  1,2
+2,0 2,1  2,2
+#%% 
+#how to get right to left Diagonal   / when we use arr[] []
+skip = len(arr)
+for i in range(0,len(arr)):
+    skip=skip-1
+    print(arr[i][skip])
+#%%
+
+
+
+#%%
+
+
+
